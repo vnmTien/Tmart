@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import CommonSection from '../components/UI/CommonSection';
+
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <CommonSection title="Products"/>
   )
 }
 
