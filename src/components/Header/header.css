@@ -11,6 +11,7 @@
     justify-content: space-between;
 }
 
+
 .logo {
     display: flex;
     align-items: center;
@@ -55,6 +56,7 @@
 
 .fav__icon, .cart__icon {
     position: relative;
+    cursor: pointer;
 }
 
 .badge {
