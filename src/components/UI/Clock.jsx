@@ -23,7 +23,7 @@ const Clock = () => {
             const minutes = Math.floor( different % (1000 * 60 * 60) / (1000 * 60));
             const seconds = Math.floor( different % (1000 * 60) / 1000);
 
-            if(destination < 0) clearInterval(interval.current)
+            if(destination < 0) { clearInterval(interval.current) }
             else {
                 setDays(days);
                 setHours(hours);

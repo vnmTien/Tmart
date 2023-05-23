@@ -22,6 +22,7 @@ const ProductDetails = () => {
   const product = products.find(item => item.id === id)
 
   const { imgUrl, productName, price, avgRating, reviews, description, shortDesc, category } = product;
+  console.log('selectedproduct', product);
 
   const relatedProducts = products.filter(item => item.category === category)
   const submitHandler = (e) => {
@@ -43,7 +44,7 @@ const ProductDetails = () => {
       id,
       imgUrl,
       productName,
-      price
+      price,
     }))
     toast.success('Product added successfully')
   }
