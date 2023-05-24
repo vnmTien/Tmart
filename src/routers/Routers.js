@@ -8,6 +8,7 @@ import ProductDetails from '../pages/ProductDetails.jsx'
 import Login from '../pages/Login.jsx'
 import Signup from '../pages/SignUp.jsx'
 import Checkout from '../pages/CheckOut.jsx'
+import ProtectedRoute from './ProtectedRoute.js';
 
 const Routers = () => {
   return (
@@ -17,7 +18,7 @@ const Routers = () => {
       <Route path='shop' element={<Shop />} />
       <Route path='shop/:id' element={<ProductDetails />} />
       <Route path='cart' element={<Cart />} />
-      <Route path='checkout' element={<Checkout />} />
+      <Route path='checkout' element={<ProtectedRoute> <Checkout /> </ProtectedRoute> } />
       <Route path='login' element={<Login />} />
       <Route path='signup' element={<Signup />} />
     </Routes>
