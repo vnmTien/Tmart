@@ -28,7 +28,7 @@ const CheckOut = () => {
       toast.error('You have not filled in your shipping information.');
       e.preventDefault();
     }
-    if (totalQty === 0) {
+    else if (totalQty === 0) {
       toast.error('You have not selected a product yet');
       navigate('/shop');
     }
