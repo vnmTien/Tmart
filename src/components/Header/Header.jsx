@@ -8,9 +8,12 @@ import { motion } from 'framer-motion'
 import logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 
-
-import { Container, Row } from 'reactstrap'
+import { toast } from 'react-toastify'
+import { Container, Row} from 'reactstrap'
 import { useSelector } from 'react-redux'
+import useAuth from '../../custom-hooks/useAuth'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase.config'
 
 const navLink = [
   {
@@ -34,8 +37,10 @@ const Header = () => {
   const totalQuantity = useSelector(state => state.cart.totalQuantity)
 
   const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
-  const navigate = useNavigate()
+  const profileActionsRef = useRef(null); 
 
   const stickyHeaderFunc = () => {
     window.addEventListener('scroll', () => {
@@ -50,11 +55,23 @@ const Header = () => {
     })
   };
 
+  const logout = () => {
+  
+    signOut(auth).then(() => {
+      toast.success('Logged out');
+      navigate('/home');
+    }).catch(err => {
+      toast.error(err.message);
+    })
+  }
+
   useEffect(() => {
     stickyHeaderFunc();
 
     return () => window.removeEventListener('scroll', stickyHeaderFunc);
   },[]);
+
+  const profileActionsToggle = () => profileActionsRef.current.classList.toggle('show__profile-actions');
 
   const menuToggle = () => menuRef.current.classList.toggle('active__menu');
 
@@ -100,9 +117,25 @@ const Header = () => {
               </span>
 
               {/* user */}
-              <span>
-                <motion.img whileTap={{ scale:1.2 }} src={userIcon} alt="user" />
-              </span>
+              <div className='profile'>
+                <motion.img 
+                  whileTap={{ scale:1.2 }} 
+                  src={ currentUser ? currentUser.imgURL : userIcon } 
+                  alt="user" 
+                  onClick={profileActionsToggle}
+                  />
+
+                <div className='profile__actions' ref={profileActionsRef} onClick={profileActionsToggle}>
+                  {
+                    currentUser ? ( <span onClick={logout}>Logout</span> )
+                    :
+                    ( <div className='d-flex align-items-center justify-content-center flex-column'>
+                      <Link to='/signup'>Singup</Link>
+                      <Link to='/login'>Login</Link>
+                    </div> )
+                  }
+                </div>
+              </div>
 
               {/* mobile menu */}
               <div className="mobile__menu">

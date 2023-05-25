@@ -28,7 +28,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const signup = async (e) => {
+  const register = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -81,7 +81,7 @@ const SignUp = () => {
                   <h3 className="fw-bold mb-4">
                     Signup
                   </h3>
-                  <Form className='auth__form' onSubmit={signup}>
+                  <Form className='auth__form' onSubmit={register}>
                     <FormGroup className='form__group'>
                       <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
                     </FormGroup>
