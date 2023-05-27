@@ -47,7 +47,7 @@ const SignUp = () => {
           // update user profile
           await updateProfile(user, {
             displayName: username,
-            imgURL: downloadURL,
+            photoURL: downloadURL,
           });
 
           // store user data in firestore database
@@ -55,7 +55,7 @@ const SignUp = () => {
             uid: user.uid,
             displayName: username,
             mail,
-            imgURL: downloadURL,
+            photoURL: downloadURL,
           });
         });
       });
