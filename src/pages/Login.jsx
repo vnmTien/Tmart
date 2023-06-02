@@ -27,7 +27,7 @@ const Login = () => {
       const user = userCredential.user;
       console.log(user);
       setLoading(false);
-      toast.success("Successfully signed in");
+      toast.success("Successfully login in");
       navigate('/checkout'); 
 
     } catch (error) {
