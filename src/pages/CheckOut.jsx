@@ -35,6 +35,8 @@ const CheckOut = () => {
     else {
       toast.success('You ordered succeed. Your order will be processed as soon as possible.');
       navigate('/shop');
+      totalQty = 0;
+      totalAmount = 0; 
     }
   };
 
