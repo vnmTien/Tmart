@@ -13,7 +13,7 @@ import ProtectedRoute from './ProtectedRoute.js';
 const Routers = () => {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/home' basename="/Tmart" />} />
+      <Route path='/' element={<Navigate to='/home' />} basename="/Tmart" />
       <Route path='home' element={<Home />} basename="/Tmart" />
       <Route path='shop' element={<Shop />} basename="/Tmart" />
       <Route path='shop/:id' element={<ProductDetails />} basename="/Tmart" />
