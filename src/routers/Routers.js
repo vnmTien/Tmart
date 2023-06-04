@@ -13,14 +13,14 @@ import ProtectedRoute from './ProtectedRoute.js';
 const Routers = () => {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/home' />} basename="/Tmart" exact component={Home} />
-      <Route path='home' element={<Home />} basename="/Tmart" exact component={Home} />
-      <Route path='shop' element={<Shop />} basename="/Tmart" exact component={Shop} />
-      <Route path='shop/:id' element={<ProductDetails />} basename="/Tmart" />
-      <Route path='cart' element={<Cart />} basename="/Tmart" exact component={Cart}/>
-      <Route path='checkout' element={<ProtectedRoute> <Checkout /> </ProtectedRoute> } />
-      <Route path='login' element={<Login />} basename="/Tmart" exact component={Login} />
-      <Route path='signup' element={<Signup />} basename="/Tmart" exact component={Signup} />
+      <Route exact path='/' element={<Navigate to='/home' />}  />
+      <Route exact path='home' element={<Home />} />
+      <Route exact path='shop' element={<Shop />} />
+      <Route exact path='shop/:id' element={<ProductDetails />} />
+      <Route exact path='cart' element={<Cart />} />
+      <Route exact path='checkout' element={<ProtectedRoute> <Checkout /> </ProtectedRoute> } />
+      <Route exact path='login' element={<Login />} />
+      <Route exact path='signup' element={<Signup />} />
     </Routes>
   )
 }
