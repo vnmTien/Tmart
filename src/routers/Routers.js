@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Switch } from 'react-router-dom';
 
 import Home from '../pages/Home.jsx'
 import Shop from '../pages/Shop.jsx'
@@ -13,14 +13,16 @@ import ProtectedRoute from './ProtectedRoute.js';
 const Routers = () => {
   return (
     <Routes>
-      <Route exact path='/' element={<Navigate to='/home' />}  />
-      <Route exact path='home' element={<Home />} />
-      <Route exact path='shop' element={<Shop />} />
-      <Route exact path='shop/:id' element={<ProductDetails />} />
-      <Route exact path='cart' element={<Cart />} />
-      <Route exact path='checkout' element={<ProtectedRoute> <Checkout /> </ProtectedRoute> } />
-      <Route exact path='login' element={<Login />} />
-      <Route exact path='signup' element={<Signup />} />
+      <Switch>
+        <Route exact path='/' element={<Navigate to='/home' />}  />
+        <Route path='home' element={<Home />} />
+        <Route path='shop' element={<Shop />} />
+        <Route path='shop/:id' element={<ProductDetails />} />
+        <Route path='cart' element={<Cart />} />
+        <Route path='checkout' element={<ProtectedRoute> <Checkout /> </ProtectedRoute> } />
+        <Route path='login' element={<Login />} />
+        <Route path='signup' element={<Signup />} />
+      </Switch>
     </Routes>
   )
 }
