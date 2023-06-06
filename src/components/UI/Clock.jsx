@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useEffect } from 'react'
 
 import '../../Styles/clock.css';
@@ -10,12 +10,12 @@ const Clock = () => {
     const [minutes, setMinutes] = useState();
     const [seconds, setSeconds] = useState();
     
-    let interval;
+    let interval = useRef();
 
     const countDown = () => {
-        const destination = new Date('June 13, 2023').getTime();
+        const destination = new Date('June 8 , 2023').getTime();
 
-        interval = setInterval(() => {
+        interval.current = setInterval(() => {
             const now = new Date().getTime();
             const different = destination - now;
             const days = Math.floor( different / (1000 * 60 * 60 * 24));
@@ -23,18 +23,21 @@ const Clock = () => {
             const minutes = Math.floor( different % (1000 * 60 * 60) / (1000 * 60));
             const seconds = Math.floor( different % (1000 * 60) / 1000);
 
-            if(destination < 0) { clearInterval(interval.current) }
+            if(different < 0) { clearInterval(interval.current) }
             else {
                 setDays(days);
                 setHours(hours);
                 setMinutes(minutes);
                 setSeconds(seconds);
             }
-        })
+        },1000)
     };
 
     useEffect(() => {
-        countDown();        
+        countDown();
+        return () => { 
+            clearInterval(interval.current);
+        }
     },[]);
 
 

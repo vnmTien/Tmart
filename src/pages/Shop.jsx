@@ -68,7 +68,16 @@ const handleFilter = (e) => {
     setProductsData([...filteredProducts]);
     console.log(filteredProducts)
     };
-}
+
+    if (filterValue === 'descending') {
+      const filteredProducts = products.sort(
+        (a,b) =>  b.price - a.price
+        );
+      setProductsData([...filteredProducts]);
+      console.log(filteredProducts)
+      };
+
+    }
 
 useEffect(() => {
   console.log('filter:', productsData)

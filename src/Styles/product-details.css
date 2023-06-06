@@ -1,7 +1,11 @@
 .product__details {
     margin-top: 70px;
 }
-
+.product__img{
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1 / 1;
+}
 .product__details h2 {
     font-size: 1.6rem;
     margin-bottom: 10px;
