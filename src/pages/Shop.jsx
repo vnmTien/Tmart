@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CommonSection from '../components/UI/CommonSection';
 import Helmet from '../components/Helmet/Helmet'
 import { Container, Row, Col } from 'reactstrap';
@@ -9,6 +9,19 @@ import ProductsList from '../components/UI/ProductsList'
 const Shop = () => {
 
 const [productsData, setProductsData] = useState(products)
+
+// const priceFilter = (e) => {
+//   const filterV = e.target.value;
+
+//   if (filterV === 'ascending') {
+//     const filteredProducts1 = products.sort(
+//       (a,b) => {  return( a.price - b.price)
+//       });
+//     setProductsData(filteredProducts1);
+//     console.log(filteredProducts1)
+//   }
+// }
+
 
 const handleFilter = (e) => {
   const filterValue = e.target.value;
@@ -47,7 +60,19 @@ const handleFilter = (e) => {
       );
       setProductsData(filteredProducts);
     };
+
+    if (filterValue === 'ascending') {
+    const filteredProducts = products.sort(
+      (a,b) =>  a.price - b.price
+      );
+    setProductsData([...filteredProducts]);
+    console.log(filteredProducts)
+    };
 }
+
+useEffect(() => {
+  console.log('filter:', productsData)
+},[productsData])
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value
@@ -78,7 +103,7 @@ const handleFilter = (e) => {
           </Col>
           <Col lg='3' md='6' className=''>
           <div className="filter__widget">
-              <select>
+              <select onChange={handleFilter}>
               <option>Sort By</option>
                 <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
@@ -100,6 +125,7 @@ const handleFilter = (e) => {
         <Row>
           {
             productsData.length === 0? <h1 className='text-center fs-4'>No products are found!</h1> : <ProductsList data={productsData}/>
+              // <ProductsList data={productsData}/>
           }
         </Row>
       </Container>

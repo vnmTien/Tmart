@@ -75,7 +75,7 @@ const products = [
     id: "03",
     productName: "Amazon Brand Modern Sofa",
     imgUrl: productImg03,
-    category: "sofa",
+    category: ["sofa"],
     price: 173,
     shortDesc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
