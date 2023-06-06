@@ -1,7 +1,8 @@
 {
-  "name": "maltimart-ecommerce",
+  "name": "Tmart-ecommerce",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vnmTien.github.io/Tmart",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -21,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.0"
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "gh-pages": "^5.0.0"
   }
 }

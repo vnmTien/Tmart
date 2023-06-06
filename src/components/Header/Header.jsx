@@ -121,7 +121,7 @@ const Header = () => {
                 <motion.img 
                   whileTap={{ scale:1.2 }} 
                   src={ currentUser ? currentUser.photoURL : userIcon } 
-                  alt="user" 
+                  alt={ currentUser ? currentUser.displayName : 'user' }  
                   onClick={profileActionsToggle}
                   />
 

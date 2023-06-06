@@ -8,7 +8,7 @@ const Layout = () => {
     <>
         <Header/>
             <div>
-                <Routers/>
+                <Routers />
             </div>
         <Footer/>
     </>
