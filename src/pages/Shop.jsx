@@ -15,35 +15,35 @@ const handleFilter = (e) => {
 
     if(filterValue === 'sofa'){
       const filteredProducts = products.filter(
-        (item) => item.category === "sofa"
+        (item) => item.category.includes("sofa")
       );
       setProductsData(filteredProducts);
     };
 
     if(filterValue === 'mobile'){
       const filteredProducts = products.filter(
-        (item) => item.category === "mobile"
+        (item) => item.category.includes("mobile")
       );
       setProductsData(filteredProducts);
     };
 
     if(filterValue === 'chair'){
       const filteredProducts = products.filter(
-        (item) => item.category === "chair"
-      );
-      setProductsData(filteredProducts);
-    };
+        (item) => item.category.includes("chair")
+        );
+        setProductsData(filteredProducts);
+      };
 
     if(filterValue === 'watch'){
       const filteredProducts = products.filter(
-        (item) => item.category === "watch"
+        (item) => item.category.includes("watch")
       );
       setProductsData(filteredProducts);
     };
 
     if(filterValue === 'wireless'){
       const filteredProducts = products.filter(
-        (item) => item.category === "wireless"
+        (item) => item.category.includes("wireless")
       );
       setProductsData(filteredProducts);
     };

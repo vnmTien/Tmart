@@ -21,23 +21,23 @@ const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
   const [mobileProducts, setMobileProducts] = useState([]);
-  const [wirelessProducts, setWirelessProducts] = useState([]);
+  // const [wirelessProducts, setWirelessProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
 
   const year = new Date().getFullYear();
 
   useEffect(() => 
   {
-    const filterTrendingProducts = products.filter(item => item.category === 'chair');
-    const filterBestSalesProducts = products.filter(item => item.category === 'sofa');
-    const filterMobileProducts = products.filter(item => item.category === 'mobile');
-    const filterWirelessProducts = products.filter(item => item.category === 'wireless');
-    const filterPopularProducts = products.filter(item => item.category === 'watch');
+    const filterTrendingProducts = products.filter(item => item.category.includes('trending'));
+    const filterBestSalesProducts = products.filter(item => item.category.includes('best seller'));
+    const filterMobileProducts = products.filter(item => item.category.includes('new'));
+    // const filterWirelessProducts = products.filter(item => item.category === 'wireless');
+    const filterPopularProducts = products.filter(item => item.category.includes('popular'));
 
     setTrendingProducts(filterTrendingProducts);
     setBestSalesProducts(filterBestSalesProducts);
     setMobileProducts(filterMobileProducts);
-    setWirelessProducts(filterWirelessProducts);
+    // setWirelessProducts(filterWirelessProducts);
     setPopularProducts(filterPopularProducts);
 
   }, []);
@@ -126,7 +126,7 @@ const Home = () => {
               </h2>
             </Col>
             <ProductsList data={mobileProducts}/>
-            <ProductsList data={wirelessProducts}/>
+            {/* <ProductsList data={wirelessProducts}/> */}
           </Row>
         </Container>
       </section>
