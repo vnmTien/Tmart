@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Tmart/static/css/main.117b5ead.css",
-    "main.js": "/Tmart/static/js/main.c90001b9.js",
+    "main.css": "/Tmart/static/css/main.0a74f1de.css",
+    "main.js": "/Tmart/static/js/main.99eff227.js",
     "static/media/single-sofa-01.jpg": "/Tmart/static/media/single-sofa-01.db24b9feed7582c4e98d.jpg",
     "static/media/arm-chair-03.jpg": "/Tmart/static/media/arm-chair-03.3249f382638c86196acd.jpg",
     "static/media/single-sofa-03.jpg": "/Tmart/static/media/single-sofa-03.0d976c067034347df78d.jpg",
@@ -41,11 +41,11 @@
     "static/media/fa-v4compatibility.ttf": "/Tmart/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
     "static/media/fa-v4compatibility.woff2": "/Tmart/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
     "index.html": "/Tmart/index.html",
-    "main.117b5ead.css.map": "/Tmart/static/css/main.117b5ead.css.map",
-    "main.c90001b9.js.map": "/Tmart/static/js/main.c90001b9.js.map"
+    "main.0a74f1de.css.map": "/Tmart/static/css/main.0a74f1de.css.map",
+    "main.99eff227.js.map": "/Tmart/static/js/main.99eff227.js.map"
   },
   "entrypoints": [
-    "static/css/main.117b5ead.css",
-    "static/js/main.c90001b9.js"
+    "static/css/main.0a74f1de.css",
+    "static/js/main.99eff227.js"
   ]
 }
