@@ -29,46 +29,59 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const signup = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, mail, password);
+    if (username !== "" && mail !== "" && password !== "") {
+      e.preventDefault();
+      setLoading(true);
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, mail, password);
 
-      const user = userCredential.user;
+        const user = userCredential.user;
 
-      const storageRef = ref(storage, `images/${Date.now() + username}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+        const storageRef = ref(storage, `images/${Date.now() + username}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on((error) => {
-        toast.error(error.message);
-      }, () => {
-        getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+        uploadTask.on((error) => {
+          toast.error(error.message);
+        }, () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
 
-          // update user profile
-          await updateProfile(user, {
-            displayName: username,
-            photoURL: downloadURL,
-          });
+            // update user profile
+            await updateProfile(user, {
+              displayName: username,
+              photoURL: downloadURL,
+            });
 
-          // store user data in firestore database
-          await setDoc(doc(db, 'users', user.uid), {
-            uid: user.uid,
-            displayName: username,
-            mail,
-            photoURL: downloadURL,
+            // store user data in firestore database
+            await setDoc(doc(db, 'users', user.uid), {
+              uid: user.uid,
+              displayName: username,
+              mail,
+              photoURL: downloadURL,
+            });
           });
         });
-      });
 
-      setLoading(false);
-      toast.success('Account created');
-      navigate('/login');
+        setLoading(false);
+        toast.success('Account created');
+        navigate('/login');
 
-    } catch (error) {
+      } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+          setLoading(false);
+          toast.error(`${error.message}`);
+        }
+        if (error.code === 'auth/weak-password') {
+          setLoading(false);
+          toast.error(`${error.message}`);
+        }
+      }
+    } else {
+      e.preventDefault();
       setLoading(false);
-      toast.error('something went wrong');
+      toast.error('Please fill in the information');
     }
   }
+
 
   return (
     <Helmet title='Signup'>
@@ -95,8 +108,8 @@ const SignUp = () => {
                     </FormGroup>
 
                     <FormGroup className='form__group'>
-                      <input type="file" 
-                          onChange={(e) => setFile(e.target.files[0])} 
+                      <input type="file"
+                        onChange={(e) => setFile(e.target.files[0])}
                       />
                     </FormGroup>
 
