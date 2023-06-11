@@ -69,7 +69,7 @@ const Header = () => {
     stickyHeaderFunc();
 
     return () => window.removeEventListener('scroll', stickyHeaderFunc);
-  },[]);
+  });
 
   const profileActionsToggle = () => profileActionsRef.current.classList.toggle('show__profile-actions');
 
@@ -120,7 +120,7 @@ const Header = () => {
               <div className='profile'>
                 <motion.img 
                   whileTap={{ scale:1.2 }} 
-                  src={ currentUser ? currentUser.photoURL : userIcon } 
+                  src={ currentUser ? currentUser?.photoURL : userIcon } 
                   alt={ currentUser ? currentUser.displayName : 'user' }  
                   onClick={profileActionsToggle}
                   />

@@ -11,6 +11,8 @@ import { auth } from '../firebase.config';
 import { storage } from '../firebase.config';
 import { db } from '../firebase.config';
 
+import { signOut } from 'firebase/auth'
+
 import { toast } from 'react-toastify';
 
 import "../Styles/login.css"
@@ -63,7 +65,15 @@ const SignUp = () => {
 
         setLoading(false);
         toast.success('Account created');
-        navigate('/login');
+        console.log(user);
+        signOut(auth).then(() => {
+          // toast.success('Logged out');
+          navigate('/login');
+        }).catch(err => {
+          toast.error(err.message);
+        })
+        // navigate('/login');
+        
 
       } catch (error) {
         if (error.code === 'auth/email-already-in-use') {
