@@ -74,12 +74,7 @@ const Tr = ({item}) => {
     dispatch(cartActions.deleteItem(item.id))
   }
   const decreaseProduct =() => {
-    dispatch(cartActions.decreaseItem({
-      id: item.id,
-      productName: item.productName,
-      price: item.price,
-      imgUrl: item.imgUrl,
-    }))
+    dispatch(cartActions.decreaseItem(item.id))
   }
   const addProduct = () => {
   dispatch(cartActions.addItem({
@@ -97,7 +92,7 @@ const Tr = ({item}) => {
   <td>
     <motion.i onClick={decreaseProduct} whileTap={{scale: 1.2}} class='ri-subtract-line '></motion.i>
     {item.quantity} 
-    <motion.i onClick={addProduct} whileTap={{scale: 1.2}} class='ri-add-line align-items-center'></motion.i>
+    <motion.i onClick={addProduct} whileTap={{scale: 1.2}} class='ri-add-line '></motion.i>
   </td>
   <td><motion.i onClick={deleteProduct} whileTap={{scale: 1.2}} class="ri-delete-bin-line align-items-center"></motion.i></td>
 </tr>
