@@ -80,7 +80,7 @@ const ProductDetails = () => {
 
                 <div className='d-flex align-items-center gap-5'>
                 <span className='product__price'>${price}</span>
-                <span>Category: {category.charAt(0).toUpperCase() + category.slice(1) }</span>
+                <span>Category: {category[0].charAt(0).toUpperCase() + category[0].slice(1) }</span>
                 </div>
                 <p className='mt-3'>{shortDesc}</p>
 
