@@ -24,7 +24,7 @@ const ProductDetails = () => {
   const { imgUrl, productName, price, avgRating, reviews, description, shortDesc, category } = product;
   console.log('selectedproduct', product);
 
-  const relatedProducts = products.filter(item => item.category === category)
+  const relatedProducts = products.filter(item => item.category[0] === category[0])
   const submitHandler = (e) => {
     e.preventDefault()
 
