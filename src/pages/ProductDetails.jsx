@@ -39,15 +39,16 @@ const ProductDetails = () => {
     toast.success('Review Submitted');
   };
 
-  const addToCart = () => {
+  const addToCart = ({ item }) => {
     dispatch(cartActions.addItem({
-      id,
-      imgUrl,
-      productName,
-      price,
+      id: item.id,
+      productName: item.productName,
+      price: item.price,
+      imgUrl: item.imgUrl,
     }))
     toast.success('Product added successfully')
   }
+
 
   useEffect (() => {
     window.scrollTo(0,0)
@@ -83,7 +84,7 @@ const ProductDetails = () => {
                 <span>Category: {category[0].charAt(0).toUpperCase() + category[0].slice(1) }</span>
                 </div>
                 <p className='mt-3'>{shortDesc}</p>
-
+                {/* {item.quantity} */}
                 <motion.button whileTap={{ scale: 1.2 }} className="shop__btn" onClick={addToCart}>Add to Cart</motion.button>
               </div>
             </Col>

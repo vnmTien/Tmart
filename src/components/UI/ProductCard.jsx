@@ -14,7 +14,10 @@ import { cartActions } from '../../redux/slices/cartSlice'
 const ProductCard = ({item}) => {
 
     const dispatch = useDispatch()
-
+    const decreaseProduct =() => {
+        dispatch(cartActions.decreaseItem(item.id))
+        toast.warn('Product had been removed')
+    }
     const addToCart = () => {
         dispatch(cartActions.addItem({
             id: item.id,
@@ -41,7 +44,10 @@ const ProductCard = ({item}) => {
                 </div>
                 <div className="product__card-bottom d-flex align-items-center justify-content-between p-2">
                     <span className="price">${item.price}</span>
+                    <div className='d-flex gap-2'>
+                    <motion.span whileTap={{ scale: 1.2 }} onClick={decreaseProduct}><i class="fa-solid fa-minus"></i></motion.span>
                     <motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}><i class="fa-solid fa-plus"></i></motion.span>
+                    </div>
                 </div>
             </div>
         </Col>
