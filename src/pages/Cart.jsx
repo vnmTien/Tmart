@@ -14,7 +14,6 @@ const Cart = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
 
-
   return (
     <Helmet title="Cart">
       <Commonsection title="Shopping Cart" />
@@ -74,13 +73,33 @@ const Tr = ({item}) => {
   const deleteProduct = () => {
     dispatch(cartActions.deleteItem(item.id))
   }
+  const decreaseProduct =() => {
+    dispatch(cartActions.decreaseItem({
+      id: item.id,
+      productName: item.productName,
+      price: item.price,
+      imgUrl: item.imgUrl,
+    }))
+  }
+  const addProduct = () => {
+  dispatch(cartActions.addItem({
+    id: item.id,
+            productName: item.productName,
+            price: item.price,
+            imgUrl: item.imgUrl,
+  }))
+  }
   return (
   <tr>
   <td><img src={item.imgUrl} alt="" /></td>
   <td>{item.productName}</td>
   <td>${item.price}</td>
-  <td>{item.quantity}</td>
-  <td><motion.i onClick={deleteProduct} whileTap={{scale: 1.2}} class="ri-delete-bin-line"></motion.i></td>
+  <td>
+    <motion.i onClick={decreaseProduct} whileTap={{scale: 1.2}} class='ri-subtract-line '></motion.i>
+    {item.quantity} 
+    <motion.i onClick={addProduct} whileTap={{scale: 1.2}} class='ri-add-line align-items-center'></motion.i>
+  </td>
+  <td><motion.i onClick={deleteProduct} whileTap={{scale: 1.2}} class="ri-delete-bin-line align-items-center"></motion.i></td>
 </tr>
 )
 }
