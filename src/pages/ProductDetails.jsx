@@ -22,7 +22,6 @@ const ProductDetails = () => {
   const product = products.find(item => item.id === id)
 
   const { imgUrl, productName, price, avgRating, reviews, description, shortDesc, category } = product;
-  console.log('selectedproduct', product);
 
   const relatedProducts = products.filter(item => item.category[0] === category[0])
   const submitHandler = (e) => {
@@ -39,16 +38,20 @@ const ProductDetails = () => {
     toast.success('Review Submitted');
   };
 
-  const addToCart = ({ item }) => {
+  const addToCart = () => {
     dispatch(cartActions.addItem({
-      id: item.id,
-      productName: item.productName,
-      price: item.price,
-      imgUrl: item.imgUrl,
+      id,
+      imgUrl,
+      productName,
+      price,
     }))
     toast.success('Product added successfully')
-  }
+  };
 
+  const deleteProduct =() => {
+    dispatch(cartActions.deleteItem(id))
+    toast.warn('Product had been removed')
+}
 
   useEffect (() => {
     window.scrollTo(0,0)
@@ -84,8 +87,9 @@ const ProductDetails = () => {
                 <span>Category: {category[0].charAt(0).toUpperCase() + category[0].slice(1) }</span>
                 </div>
                 <p className='mt-3'>{shortDesc}</p>
-                {/* {item.quantity} */}
+                
                 <motion.button whileTap={{ scale: 1.2 }} className="shop__btn" onClick={addToCart}>Add to Cart</motion.button>
+                <motion.button whileTap={{ scale: 1.2 }} className="shop__btn" onClick={deleteProduct}>Remove from Cart</motion.button>
               </div>
             </Col>
           </Row>
