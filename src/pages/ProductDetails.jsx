@@ -89,7 +89,7 @@ const ProductDetails = () => {
                 <p className='mt-3'>{shortDesc}</p>
                 
                 <motion.button whileTap={{ scale: 1.2 }} className="shop__btn" onClick={addToCart}>Add to Cart</motion.button>
-                <motion.button whileTap={{ scale: 1.2 }} className="shop__btn margin-left-5" onClick={deleteProduct}>Remove from Cart</motion.button>
+                <motion.button whileTap={{ scale: 1.2 }} className="shop__btn ms-2" onClick={deleteProduct}>Remove from Cart</motion.button>
               </div>
             </Col>
           </Row>
