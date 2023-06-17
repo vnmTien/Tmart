@@ -123,7 +123,7 @@ const ProductDetails = () => {
                           reviews.map((item,index) => (
                             <li key={index} className='mb-4'>
                               <h6>Minh Luan</h6>
-                            <span>{item.rating} ( rating)</span>
+                            <span>{item.rating} ( rating )</span>
                             <p>{item.text}</p>
                             </li>
                           ))

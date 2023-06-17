@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../redux/slices/cartSlice';
 
 import { Container, Col, Row, Form, FormGroup } from 'reactstrap';
 import Helmet from '../components/Helmet/Helmet.js';
@@ -13,6 +16,8 @@ const CheckOut = () => {
 
   const totalQty = useSelector(state => state.cart.totalQuantity);
   const totalAmount = useSelector(state => state.cart.totalAmount);
+  
+  const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
@@ -34,10 +39,11 @@ const CheckOut = () => {
     }
     else {
       toast.success('You ordered succeed. Your order will be processed as soon as possible.');
+      dispatch(cartActions.clearCart());
       navigate('/shop');
-      totalQty = 0;
-      totalAmount = 0; 
+      
     }
+      
   };
 
 
